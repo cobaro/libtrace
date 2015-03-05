@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Creating configure environment for you"
+aclocal -I m4 && \
+autoheader && \
+libtoolize -c && \
+automake -a -c -f && \
+autoconf && \
+echo "Run './configure' or './configure --help' for assistance" || \
+echo "Something went wrong"
+

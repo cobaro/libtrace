@@ -1,0 +1,8 @@
+.deps/
+.libs/
+config.h
+config.h.in
+libtrace.la
+stamp-h1
+*.o
+*.lo
