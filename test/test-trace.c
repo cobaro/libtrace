@@ -6,11 +6,20 @@ All rights reserved.
 COPYRIGHT_END
 ****************************************************************/
 
-#include "trace.h"
+#define COBARO_TRACE_ENABLED 1
+#include "trace/trace.h"
 #include "greatest.h"
 
 TEST trace_linkage() {
-    GREATEST_ASSERT(trace_version() != NULL);
+    GREATEST_ASSERT(cobaro_trace_version() != NULL);
+    GREATEST_PASS();
+}
+
+TEST trace_print() {
+    // How tro check output?
+    COBARO_TRACE(1, "%s", "test1") ;
+    COBARO_TRACE(2, "%s %d %u", "test2", 2, 3);
+    COBARO_TRACE(3, "%d", 5) ;
     GREATEST_PASS();
 }
 
@@ -19,6 +28,7 @@ SUITE(trace_trace) {
     //SET_TEARDOWN(teardown_cb, NULL);
 
     RUN_TEST(trace_linkage);
+    RUN_TEST(trace_print);
 }
 
 /* Add definitions that need to be in the test runner's main file. */

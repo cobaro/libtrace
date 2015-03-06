@@ -8,12 +8,10 @@ lib_LTLIBRARIES = libtrace.la
 libtrace_ladir = $(includedir)/trace
 
 libtrace_la_HEADERS = \
-	trace.h
+	trace/trace.h
 
 libtrace_la_SOURCES = \
 	trace.c
 
-AM_CPFLAGS = \
+AM_CPPFLAGS = \
 	@CPPFLAGS@
-
-

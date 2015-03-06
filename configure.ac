@@ -5,7 +5,7 @@
 
 AC_INIT([libtrace], [1.0.0], [bill@cobaro.org])
 
-AC_CONFIG_SRCDIR(lib/trace.h)
+AC_CONFIG_SRCDIR(lib/trace/trace.h)
 AC_PREREQ(2.68)
 AM_INIT_AUTOMAKE([-Wall, -Werror foreign])
 AM_CONFIG_HEADER(lib/config.h)
@@ -16,6 +16,7 @@ LT_INIT()
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_PROG_CC
+AM_PROG_CC_C_O
 AC_HEADER_STDC
 AC_PROG_LN_S
 AC_PROG_INSTALL
@@ -35,7 +36,11 @@ AC_SUBST(RPM_CFLAGS)
 
 # Header files we need to know about
 AC_CHECK_HEADERS(\
+ libgen.h \
+ stdarg.h \
  stdio.h \
+ string.h \
+ time.h \
 )
 
 # See if valgrind is available
