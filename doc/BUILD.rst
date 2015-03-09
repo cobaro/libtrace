@@ -1,4 +1,4 @@
-trace Developers Guide
+Developer's Guide
 =========================
 
 To initialize your build environment following an initial checkout, or
@@ -16,12 +16,10 @@ re-bootstrap and re-configure for each build.
 
 To run the unit tests, run ``make check``.
 
-To build the RPM package, run ``script/build.sh``.
+To build the RPM package, run ``make packageh``.
 
 Environment
 -----------
 * Compiler assumed to be GCC 4.7+
 
-* 'Greatest <https://github.com/silentbicycle/greatest>'_ is used for
-   testing
-
+* `Greatest <https://github.com/silentbicycle/greatest>`_ is used for testing
