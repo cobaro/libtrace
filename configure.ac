@@ -31,7 +31,7 @@ AM_CONDITIONAL(RUN_RPMBUILD, test "x$RPMBUILD" != xno)
 RPM_BUILD_ROOT="`pwd`/packages/rpm/BUILD"
 AC_SUBST(RPM_BUILD_ROOT)
 # See packages/rpm/spec.in for how this is glued together
-RPM_CFLAGS="-std=gnu99 -flto -fuse-linker-plugin -Wall -Werror -O3 -pipe -m64 -mtune=generic -grecord-gcc-switches -UFXP_DEBUG -DNDEBUG"
+RPM_CFLAGS="-std=gnu99 -Wall -Werror -O2 -pipe -mtune=generic -DNDEBUG"
 AC_SUBST(RPM_CFLAGS)
 
 # Header files we need to know about
