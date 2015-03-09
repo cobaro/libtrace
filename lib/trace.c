@@ -77,19 +77,16 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
         return;
     }
 
-    // Add the time (hh::mm:ss:FIXME)
+    // Start trace output with time (hh:mm:ss).
     gettimeofday(&now, NULL);
     formatted += strftime(buf, COBARO_MAX_LOGLINE,
                           "%T",
                           localtime(&now.tv_sec));
-    formatted += snprintf(&buf[formatted], COBARO_MAX_LOGLINE,
-                          ".%06u",
-                          now.tv_usec);
 
-    // Add file:line
+    // Add microseconds, file and line number.
     formatted += snprintf(&buf[formatted], COBARO_MAX_LOGLINE,
-                          " %s:%d ",
-                          file_basename, line);
+                          ".%06u %s:%d ",
+                          now.tv_usec, file_basename, line);
 
     // Add their trace message
     va_start(args, format);
