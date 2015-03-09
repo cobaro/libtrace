@@ -30,8 +30,15 @@ COPYRIGHT_END
 # include <string.h>
 #endif
 
-#if defined(HAVE_TIME_H)
+#if defined(TIME_WITH_SYS_TIME)
+# include <sys/time.h>
 # include <time.h>
+#else
+# if defined(HAVE_SYS_TIME_H)
+#   include <sys/time.h>
+# else
+#   include <time.h>
+# endif
 #endif
 
 char *cobaro_trace_version(void)
@@ -51,7 +58,7 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
     char buf[COBARO_MAX_LOGLINE];
     int formatted = 0;
     va_list args;
-    time_t now;
+    struct timeval now = {0};
 
     // For a filename /path/filename.ext
     // we print filename.ext
@@ -71,8 +78,13 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
     }
 
     // Add the time (hh::mm:ss:FIXME)
-    now = time(&now);
-    formatted += strftime(buf, COBARO_MAX_LOGLINE, "%T", localtime(&now));
+    gettimeofday(&now, NULL);
+    formatted += strftime(buf, COBARO_MAX_LOGLINE,
+                          "%T",
+                          localtime(&now.tv_sec));
+    formatted += snprintf(&buf[formatted], COBARO_MAX_LOGLINE,
+                          ".%06u",
+                          now.tv_usec);
 
     // Add file:line
     formatted += snprintf(&buf[formatted], COBARO_MAX_LOGLINE,

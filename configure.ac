@@ -40,8 +40,9 @@ AC_CHECK_HEADERS(\
  stdarg.h \
  stdio.h \
  string.h \
- time.h \
+ sys/time.h
 )
+AC_HEADER_TIME
 
 # See if valgrind is available
 if test "x$cross_compiling" = xyes; then

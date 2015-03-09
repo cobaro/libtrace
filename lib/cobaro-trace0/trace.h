@@ -1,6 +1,6 @@
 // -*- mode: c -*-
-#ifndef TRACE_TRACE_H
-#define TRACE_TRACE_H
+#ifndef COBARO_TRACE0_TRACE_H
+#define COBARO_TRACE0_TRACE_H
 
 /****************************************************************
 COPYRIGHT_BEGIN
@@ -57,4 +57,4 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
 /// Printable version number
 char *cobaro_trace_version();
 
-#endif /* TRACE_TRACE_H */
+#endif /* COBARO_TRACE0_TRACE_H */
