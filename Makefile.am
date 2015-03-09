@@ -10,7 +10,8 @@ SUBDIRS = \
 	lib \
 	m4 \
 	packages \
-	script
+	script \
+	test
 
 package: dist
 if RUN_RPMBUILD
