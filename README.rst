@@ -14,15 +14,15 @@ environment variables.  Each trace statement in the code specifies a
 _level_ of importance for the message.  Environment variables specify
 the desired level of tracing for each source code file.
 
-For example, if your code includes a statement like
+For example, if your code includes a statement like::
 
     COBARO_TRACE(20, "%s", "Something important");
 
-in the source code file important.c, and you run your program like:
+in the source code file important.c, and you run your program like::
 
     trace_important=20 a.out
 
-It'll produce something like
+It'll produce something like::
 
     12:01:34 important.c:123 Something important
 
