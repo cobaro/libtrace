@@ -22,4 +22,5 @@ endif
 
 EXTRA_DIST = \
 	bootstrap \
+	LICENSE.txt \
 	README.rst
