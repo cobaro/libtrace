@@ -80,7 +80,7 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/@PACKAGE@.so $RPM_BUILD_ROOT/%{_libdir}/@PACKAG
 
 %files devel
 %defattr(755,root,root)
-%attr(644,root,root) %{prefix}/include/@PACKAGE@/*.h
+%attr(644,root,root) %{prefix}/include/cobaro-trace0/*.h
 %attr(644,root,root) %{_libdir}/@PACKAGE@.a
 %attr(644,root,root) %{_libdir}/@PACKAGE@.la
 %{_libdir}/pkgconfig/@PACKAGE@.pc

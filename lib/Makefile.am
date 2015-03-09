@@ -5,7 +5,7 @@
 
 lib_LTLIBRARIES = libcobaro-trace0.la
 
-libcobaro_trace0_ladir = $(includedir)/libcobaro-trace0
+libcobaro_trace0_ladir = $(includedir)/cobaro-trace0
 
 libcobaro_trace0_la_HEADERS = \
 	cobaro-trace0/trace.h
