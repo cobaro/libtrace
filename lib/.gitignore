@@ -2,7 +2,7 @@
 .libs/
 config.h
 config.h.in
-libtrace.la
+libcobaro-trace0.la
 stamp-h1
 *.o
 *.lo

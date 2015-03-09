@@ -3,9 +3,9 @@
 # All rights reserved.
 # COPYRIGHT_END
 
-AC_INIT([libtrace], [1.0.0], [bill@cobaro.org])
+AC_INIT([libcobaro-trace0], [1.0.0], [bill@cobaro.org])
 
-AC_CONFIG_SRCDIR(lib/trace/trace.h)
+AC_CONFIG_SRCDIR(lib/cobaro-trace0/trace.h)
 AC_PREREQ(2.68)
 AM_INIT_AUTOMAKE([-Wall, -Werror foreign])
 AM_CONFIG_HEADER(lib/config.h)
@@ -64,6 +64,7 @@ AC_CONFIG_FILES([
  lib/Makefile
  m4/Makefile
  packages/Makefile
+ packages/libcobaro-trace0.pc
  packages/rpm/Makefile
  packages/rpm/SPECS/Makefile
  packages/rpm/SOURCES/Makefile

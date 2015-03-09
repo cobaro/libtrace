@@ -3,14 +3,14 @@
 # All rights reserved.
 # COPYRIGHT_END
 
-lib_LTLIBRARIES = libtrace.la
+lib_LTLIBRARIES = libcobaro-trace0.la
 
-libtrace_ladir = $(includedir)/trace
+libcobaro_trace0_ladir = $(includedir)/libcobaro-trace0
 
-libtrace_la_HEADERS = \
-	trace/trace.h
+libcobaro_trace0_la_HEADERS = \
+	cobaro-trace0/trace.h
 
-libtrace_la_SOURCES = \
+libcobaro_trace0_la_SOURCES = \
 	trace.c
 
 AM_CPPFLAGS = \

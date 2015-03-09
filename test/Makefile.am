@@ -30,7 +30,7 @@ test_trace_SOURCES = \
 	test-trace.c
 
 test_trace_LDADD = \
-	../lib/libtrace.la
+	../lib/libcobaro-trace0.la
 
 AM_CPPFLAGS = \
 	@CPPFLAGS@ \

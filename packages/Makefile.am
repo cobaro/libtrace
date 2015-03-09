@@ -5,3 +5,10 @@
 
 SUBDIRS = \
 	rpm
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = \
+    libcobaro-trace0.pc
+
+EXTRA_DIST = \
+	libcobaro-trace0.pc.in

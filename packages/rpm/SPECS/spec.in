@@ -19,14 +19,22 @@ Vendor: cobaro.crg
 Packager: cobaro.org <support@cobaro.org>
 BuildRoot: %{_tmppath}/@PACKAGE@-@VERSION@
 Source: @PACKAGE@-@VERSION@.tar.gz
-URL: https://github.com/cobaro/trace
+URL: https://github.com/cobaro/libtrace
 Distribution: cobaro.org
 #Icon: icon.gif
 Provides: @PACKAGE@
 
 %description
-This package provides trace
+This package provides the run-time for @PACKAGE@, a code instrumentation library.
 
+%package devel
+Summary: @PACKAGE@ C SDK
+Group: Development/Libraries
+Requires: @PACKAGE@ >= @VERSION@
+Provides: @PACKAGE@-devel
+
+%description devel
+This package provides the development files for @PACKAGE@, a code instrumentation library.
 
 ################################################################
 # pre-build actions (shell)
@@ -50,6 +58,7 @@ This package provides trace
 # So we do the install to and build a list of all the files
 %install
 %__make install prefix=$RPM_BUILD_ROOT/%{prefix} libdir=$RPM_BUILD_ROOT/%{_libdir} sysconfdir=$RPM_BUILD_ROOT/%{sysconfdir} infodir=$RPM_BUILD_ROOT/%{_infodir} mandir=$RPM_BUILD_ROOT/%{_mandir} docdir=$RPM_BUILD_ROOT/%{_docdir}/@PACKAGE@-@VERSION@ datadir=$RPM_BUILD_ROOT/%{_datadir}
+rm -f $RPM_BUILD_ROOT/%{_libdir}/@PACKAGE@.so $RPM_BUILD_ROOT/%{_libdir}/@PACKAGE@.so.? # made by ldconfig
 # doc
 #%__mkdir -p $RPM_BUILD_ROOT/%{_docdir}/@PACKAGE@-@VERSION@
 #%__install $RPM_BUILD_ROOT/%{_docdir}/@PACKAGE@-@VERSION@/t $RPM_BUILD_ROOT/%{_docdir}/$package-@RELEASE@
@@ -57,16 +66,24 @@ This package provides trace
 ################################################################
 # After [de]installation we need to ...
 %post
+/sbin/ldconfig
 
 %postun
-#%__rm -rf %{_docdir}/@PACKAGE@-@RELEASE@
+/sbin/ldconfig
 
 ################################################################
 # So now we need to say what goes where
 
 %files
 %defattr(755,root,root)
-%docdir %{_docdir}/@PACKAGE@-@VERSION@/
+%{_libdir}/@PACKAGE@.so.?.?.?
+
+%files devel
+%defattr(755,root,root)
+%attr(644,root,root) %{prefix}/include/@PACKAGE@/*.h
+%attr(644,root,root) %{_libdir}/@PACKAGE@.a
+%attr(644,root,root) %{_libdir}/@PACKAGE@.la
+%{_libdir}/pkgconfig/@PACKAGE@.pc
 
 %clean
 echo cleaning up $RPM_BUILD_DIR/@PACKAGE@-@VERSION@
