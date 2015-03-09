@@ -71,6 +71,9 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/@PACKAGE@.so $RPM_BUILD_ROOT/%{_libdir}/@PACKAG
 %postun
 /sbin/ldconfig
 
+%postun devel
+rmdir --ignore-fail-on-non-empty %{prefix}/include/cobaro-trace0
+
 ################################################################
 # So now we need to say what goes where
 
