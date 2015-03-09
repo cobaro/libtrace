@@ -85,7 +85,7 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
 
     // Add microseconds, file and line number.
     formatted += snprintf(&buf[formatted], COBARO_MAX_LOGLINE,
-                          ".%06u %s:%d ",
+                          ".%06ld %s:%d ",
                           now.tv_usec, file_basename, line);
 
     // Add their trace message
