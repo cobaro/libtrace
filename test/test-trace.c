@@ -16,7 +16,10 @@ TEST trace_linkage() {
 }
 
 TEST trace_print() {
-    // How tro check output?
+    // FIXME: How to check output?
+    //  Use pipe(); close(1); dup() or dup2() to hijack stdout for the
+    //  duration of the test, and make sure it's receiving the right
+    //  things?
     COBARO_TRACE(1, "%s", "test1") ;
     COBARO_TRACE(2, "%s %d %u", "test2", 2, 3);
     COBARO_TRACE(3, "%d", 5) ;
