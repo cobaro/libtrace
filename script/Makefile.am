@@ -4,5 +4,4 @@
 # COPYRIGHT_END
 
 EXTRA_DIST = \
-    build.sh \
-    template2name.sh 
+    build.sh
