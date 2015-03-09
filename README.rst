@@ -1,6 +1,6 @@
 libtrace
 ========
-.. image:: http://jenkins.0x1.org:8080/buildStatus/icon?job=libtrace
+.. image:: hhttp://jenkins.0x1.org:8080/buildStatus/icon?job=cobaro-libtrace0
 
 libtrace is a lightweight runtime debug tracing library for C
 projects.  It can be completely disabled at compile time for releaes
@@ -16,7 +16,7 @@ the desired level of tracing for each source code file.
 
 For example, if your code includes a statement like
 
-    COBARO_TRACE(20, "Something important");
+    COBARO_TRACE(20, "%s", "Something important");
 
 in the source code file important.c, and you run your program like:
 
