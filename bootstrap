@@ -1,8 +1,15 @@
 #!/bin/bash
-echo "Creating configure environment for you"
+echo "Creating configure environment"
+
+if test -x "`which glibtoolize`"; then
+    LIBTOOLIZE=glibtoolize
+else
+    LIBTOOLIZE=libtoolize
+fi
+
 aclocal -I m4 && \
 autoheader && \
-libtoolize -c && \
+$LIBTOOLIZE -cf && \
 automake -a -c -f && \
 autoconf && \
 echo "Run './configure' or './configure --help' for assistance" || \
