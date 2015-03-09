@@ -1,6 +1,6 @@
 libtrace
 ========
-.. image:: hhttp://jenkins.0x1.org:8080/buildStatus/icon?job=cobaro-libtrace0
+.. image:: http://jenkins.0x1.org:8080/buildStatus/icon?job=cobaro-libtrace0
 
 libtrace is a lightweight runtime debug tracing library for C
 projects.  It can be completely disabled at compile time for releaes
