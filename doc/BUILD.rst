@@ -30,7 +30,7 @@ Using libtrace in your code
 Makefiles
 ---------
 
-* Add the output of ``pkg-config --cflags libcobaro-trace0` to your compilation line.
+* Add the output of ``pkg-config --cflags libcobaro-trace0`` to your compilation line.
 * Add the output of ``pkg-config --libs libcobaro-trace0`` to your link line.
 * If installed in a non-standard location add the directory containing ``libcobaro-trace0.pc`` to the ``PKG_CONFIG_PATH`` environment variable
 
@@ -56,3 +56,20 @@ automake
       ])
   ])
 
+code
+----
+
+.. code::
+  //  If you want to be able to compile without libcobaro-trace you might use something like this
+  #if defined(HAVE_COBARO_TRACE0_TRACE_H)
+  #  if defined(DEBUG)
+  #    define COBARO_TRACE_ENABLED 1
+  #  endif
+  #  include <cobaro-trace0/trace.h>
+  #else
+  #  define COBARO_TRACE(level, format, ...)
+  #endif
+
+And then in your code you might use
+.. code::
+  COBARO_TRACE(10, "%s() called with %d outstanding widgets", __func__, widget_count)
