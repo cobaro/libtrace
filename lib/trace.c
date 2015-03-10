@@ -63,11 +63,18 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
     // For a filename /path/filename.ext
     // we print filename.ext
     // we name in the env for trace_filename=level
+    // In the environment we swap '-' for '_' as '-' is not legal
     file_basename = basename(file); // we can print that
     snprintf(env_name, COBARO_MAX_ENVNAME, "trace_%s", file_basename);
     if ((index = strchr(env_name, '.'))) {
         *index = '\0';
     }
+    for (index = env_name; *index; index++) {
+        if (*index == '-') {
+            *index = '_';
+        }
+    }
+    
     env_value = getenv(env_name);
 
     // Give up if there is no envvar set
