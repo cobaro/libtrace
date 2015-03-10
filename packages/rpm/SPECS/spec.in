@@ -58,7 +58,6 @@ This package provides the development files for @PACKAGE@, a code instrumentatio
 # So we do the install to and build a list of all the files
 %install
 %__make install prefix=$RPM_BUILD_ROOT/%{prefix} libdir=$RPM_BUILD_ROOT/%{_libdir} sysconfdir=$RPM_BUILD_ROOT/%{sysconfdir} infodir=$RPM_BUILD_ROOT/%{_infodir} mandir=$RPM_BUILD_ROOT/%{_mandir} docdir=$RPM_BUILD_ROOT/%{_docdir}/@PACKAGE@-@VERSION@ datadir=$RPM_BUILD_ROOT/%{_datadir}
-rm -f $RPM_BUILD_ROOT/%{_libdir}/@PACKAGE@.so $RPM_BUILD_ROOT/%{_libdir}/@PACKAGE@.so.? # made by ldconfig
 # doc
 #%__mkdir -p $RPM_BUILD_ROOT/%{_docdir}/@PACKAGE@-@VERSION@
 #%__install $RPM_BUILD_ROOT/%{_docdir}/@PACKAGE@-@VERSION@/t $RPM_BUILD_ROOT/%{_docdir}/$package-@RELEASE@
@@ -79,14 +78,16 @@ rmdir --ignore-fail-on-non-empty %{prefix}/include/cobaro-trace0
 
 %files
 %defattr(755,root,root)
+%{_libdir}/@PACKAGE@.so.?
 %{_libdir}/@PACKAGE@.so.?.?.?
 
 %files devel
 %defattr(755,root,root)
+%{_libdir}/@PACKAGE@.so
+%{_libdir}/pkgconfig/@PACKAGE@.pc
 %attr(644,root,root) %{prefix}/include/cobaro-trace0/*.h
 %attr(644,root,root) %{_libdir}/@PACKAGE@.a
 %attr(644,root,root) %{_libdir}/@PACKAGE@.la
-%{_libdir}/pkgconfig/@PACKAGE@.pc
 
 %clean
 echo cleaning up $RPM_BUILD_DIR/@PACKAGE@-@VERSION@
