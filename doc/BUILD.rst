@@ -60,6 +60,7 @@ code
 ----
 
 .. code::
+
   //  If you want to be able to compile without libcobaro-trace you might use something like this
   #if defined(HAVE_COBARO_TRACE0_TRACE_H)
   #  if defined(DEBUG)
