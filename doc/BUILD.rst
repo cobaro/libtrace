@@ -16,10 +16,43 @@ re-bootstrap and re-configure for each build.
 
 To run the unit tests, run ``make check``.
 
-To build the RPM package, run ``make packageh``.
+To build the RPM package, run ``make package``.
 
 Environment
 -----------
-* Compiler assumed to be GCC 4.7+
 
+* Compiler assumed to be GCC 4.7+
 * `Greatest <https://github.com/silentbicycle/greatest>`_ is used for testing
+
+Using libtrace in your code
+===========================
+
+Makefiles
+---------
+
+* Add the output of ``pkg-config --cflags libcobaro-trace0` to your compilation line.
+* Add the output of ``pkg-config --libs libcobaro-trace0`` to your link line.
+* If installed in a non-standard location add the directory containing ``libcobaro-trace0.pc`` to the ``PKG_CONFIG_PATH`` environment variable
+
+
+automake
+--------
+.. code::
+  
+  # Confirm presence of libcobaro-trace0
+  PKG_PROG_PKG_CONFIG
+  PKG_CHECK_MODULES([COBARO_TRACE], [libcobaro-trace0], [
+    saved_CPPFLAGS=$CPPFLAGS
+    CPPFLAGS="$CPPFLAGS $COBARO_TRACE_CFLAGS"
+    AC_CHECK_HEADERS(cobaro-trace0/trace.h)
+    CPPFLAGS=$saved_CPPFLAGS
+  ], [
+    AC_MSG_WARN([libcobaro-trace0 not found. Building without trace library.
+        You could try installing:
+        libcobaro-trace0-dev   (debian)
+        libcobaro-trace0-devel (redhat)
+        libcobaro-trace0       (macports)
+        or you can find the source code at: https://github.com/cobaro/libtrace
+      ])
+  ])
+
