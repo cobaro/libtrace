@@ -24,15 +24,23 @@ AC_PROG_INSTALL
 # Following tests use C compilation/linkage.
 AC_LANG(C)
 
+## Packaging
+# See packages/rpm/spec.in for how this is glued together
+PACKAGE_CFLAGS="-std=gnu99 -Wall -Werror -O2 -pipe -mtune=generic -DNDEBUG"
+AC_SUBST(PACKAGE_CFLAGS)
+PACKAGE_CONFIGURE="--enable-shared --enable-static"
+AC_SUBST(PACKAGE_CONFIGURE)
+
 # RPM Settings
 AC_PATH_PROG([RPMBUILD], [rpmbuild], [no])
 AM_CONDITIONAL(RUN_RPMBUILD, test "x$RPMBUILD" != xno)
-
 RPM_BUILD_ROOT="`pwd`/packages/rpm/BUILD"
 AC_SUBST(RPM_BUILD_ROOT)
-# See packages/rpm/spec.in for how this is glued together
-RPM_CFLAGS="-std=gnu99 -Wall -Werror -O2 -pipe -mtune=generic -DNDEBUG"
-AC_SUBST(RPM_CFLAGS)
+
+# DEB Settings
+AC_PATH_PROG([DEBUILD], [debuild], [no])
+AM_CONDITIONAL(RUN_DEBUILD, test "x$DEBUILD" != xno)
+
 
 # Header files we need to know about
 AC_CHECK_HEADERS(\
@@ -66,6 +74,7 @@ AC_CONFIG_FILES([
  m4/Makefile
  packages/Makefile
  packages/libcobaro-trace0.pc
+ packages/deb/Makefile
  packages/rpm/Makefile
  packages/rpm/SPECS/Makefile
  packages/rpm/SOURCES/Makefile
