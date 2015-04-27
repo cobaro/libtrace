@@ -15,7 +15,7 @@ edit = sed \
 	-e 's,@RPM_BUILD_ROOT\@,$(RPM_BUILD_ROOT),g' \
 	-e 's,@RPM_CFLAGS\@,$(RPM_CFLAGS),g'
 
-spec: spec.in
+spec: spec.in $(top_srcdir)/configure.ac
 	rm -f spec spec.tmp
 	$(edit) $(srcdir)/spec.in >spec.tmp
 	mv spec.tmp spec
