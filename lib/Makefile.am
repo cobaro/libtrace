@@ -13,5 +13,8 @@ libcobaro_trace0_la_HEADERS = \
 libcobaro_trace0_la_SOURCES = \
 	trace.c
 
+libcobaro_trace0_la_LDFLAGS = \
+	-version-info @LIB_VERSION@
+
 AM_CPPFLAGS = \
 	@CPPFLAGS@
