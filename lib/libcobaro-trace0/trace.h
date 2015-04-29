@@ -9,13 +9,15 @@ All rights reserved.
 COPYRIGHT_END
 ****************************************************************/
 
-/// \page Introduction to debug tracing
+/// @file
+
+/// \mainpage Introduction to debug tracing
 ///
 /// Provides a trace call that can be compiled out of code to avoid
 /// any runtime penalty.
 ///
-/// If enabled at compile-time (via #COBARO_TRACE_ENABLED) then code
-/// will be called at runtime otherwise a trace is a nullop.
+/// If enabled at compile-time (via defining COBARO_TRACE_ENABLED)
+/// then code will be called at runtime otherwise a trace is a nullop.
 ///
 /// At runtime, tracing can be turned on or off on a
 /// per-file basis and on a per-level basis.
@@ -55,6 +57,6 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
     ;
 
 /// Printable version number
-char *cobaro_trace_version();
+char *cobaro_trace_version(void);
 
 #endif /* COBARO_TRACE0_TRACE_H */
