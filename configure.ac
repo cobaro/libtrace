@@ -77,6 +77,11 @@ else
 fi
 AM_CONDITIONAL(RUN_VALGRIND, test "x$VALGRIND" != xno)
 
+# See if doxygen is available
+AC_PATH_PROG([DOXYGEN], [doxygen], [echo])
+AM_CONDITIONAL(RUN_DOXYGEN, test "x$DOXYGEN" != xecho)
+
+
 # See if sphinx-build is available
 AC_PATH_PROG([SPHINXBUILD], [sphinx-build], [echo])
 AM_CONDITIONAL(RUN_SPHINX_BUILD, test "x$SPHINXBUILD" != xecho)
@@ -86,6 +91,7 @@ AC_CONFIG_FILES([
  Makefile
  doc/Makefile
  lib/Makefile
+ lib/cobaro-trace0/Makefile
  m4/Makefile
  packages/Makefile
  packages/libcobaro-trace0.pc

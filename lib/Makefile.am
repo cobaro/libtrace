@@ -3,6 +3,8 @@
 # All rights reserved.
 # COPYRIGHT_END
 
+SUBDIRS = cobaro-trace0
+
 lib_LTLIBRARIES = libcobaro-trace0.la
 
 libcobaro_trace0_ladir = $(includedir)/cobaro-trace0
