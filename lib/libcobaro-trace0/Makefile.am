@@ -14,6 +14,10 @@ Doxyfile: Doxyfile.in $(top_srcdir)/configure.ac
 	$(edit) $< >$@.tmp
 	mv $@.tmp $@
 
-doc: $(libcobaro_log0_la_HEADERS) Doxyfile
+libcobaro_trace0dir = $(includedir)/libcobaro-trace0
+libcobaro_trace0_HEADERS = \
+	trace.h
+
+doc: $(libcobaro_trace0_HEADERS) Doxyfile
 	$(DOXYGEN) 
 
