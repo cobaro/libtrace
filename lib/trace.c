@@ -6,7 +6,7 @@ All rights reserved.
 COPYRIGHT_END
 ****************************************************************/
 
-#include "cobaro-trace0/trace.h"
+#include "libcobaro-trace0/trace.h"
 
 #include "config.h"
 

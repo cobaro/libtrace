@@ -5,7 +5,7 @@
 
 AC_INIT([libcobaro-trace0], [1.0.0], [bill@cobaro.org])
 
-AC_CONFIG_SRCDIR(lib/cobaro-trace0/trace.h)
+AC_CONFIG_SRCDIR(lib/libcobaro-trace0/trace.h)
 AC_PREREQ(2.63)
 AM_INIT_AUTOMAKE([-Wall, -Werror foreign])
 AM_CONFIG_HEADER(lib/config.h)
@@ -91,7 +91,7 @@ AC_CONFIG_FILES([
  Makefile
  doc/Makefile
  lib/Makefile
- lib/cobaro-trace0/Makefile
+ lib/libcobaro-trace0/Makefile
  m4/Makefile
  packages/Makefile
  packages/libcobaro-trace0.pc

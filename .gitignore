@@ -12,8 +12,9 @@ configure
 depcomp
 install-sh
 libtool
-libcobaro-trace*.tar.gz
-libcobaro-trace*.deb
+libcobaro-trace0-?.?.?
+libcobaro-trace0*.tar.gz
+libcobaro-trace0*.deb
 ltmain.sh
 missing
 test-driver

@@ -7,7 +7,7 @@ COPYRIGHT_END
 ****************************************************************/
 
 #define COBARO_TRACE_ENABLED 1
-#include "cobaro-trace0/trace.h"
+#include "libcobaro-trace0/trace.h"
 #include "greatest.h"
 
 TEST trace_linkage() {
