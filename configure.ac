@@ -92,6 +92,7 @@ AC_CONFIG_FILES([
  doc/Makefile
  lib/Makefile
  lib/libcobaro-trace0/Makefile
+ lib/libcobaro-trace0/Doxyfile
  m4/Makefile
  packages/Makefile
  packages/libcobaro-trace0.pc
