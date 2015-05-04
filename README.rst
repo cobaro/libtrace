@@ -2,10 +2,11 @@ libtrace
 ========
 .. image:: http://jenkins.0x1.org:8080/buildStatus/icon?job=cobaro-libtrace0
 
-libtrace is a lightweight runtime debug tracing library for C
-projects.  It can be completely disabled at compile time for releaes
-builds, and selectively enabled at runtime for testing with debug
-builds.
+
+libtrace is an `MIT licensed <LICENSE.txt>`_. lightweight runtime debug
+tracing library for C projects. It can be completely disabled at
+compile time for releaes builds, and selectively enabled at runtime
+for testing with debug builds.
 
 Quickstart
 ----------
@@ -26,21 +27,19 @@ It'll produce something like::
 
     12:01:34 important.c:123 Something important
 
-Compiling
----------
-See the `Developers Guide <doc/BUILD.rst>`_.
-
-Contributing
-------------
-Contributions are welcome.
-
-The project is hosted at http://github.com/cobaro/libtrace.
-Please submit proposed changes as a pull request, or attach a patch to
-a GitHub issue.
+See the `Developers Guide <doc/DeveloperGuide.rst>`_ and doxygen
+documentation for further information on how compile and use libtrace.
 
 Licence
 -------
 See the `license <LICENSE.txt>`_.
+
+Contributing
+------------
+Contributions are welcome via `github
+https://github.com/cobaro/libtrace`_.  Please submit proposed changes as
+a pull request, or attach a patch to a GitHub issue.
+
 
 
 
