@@ -42,6 +42,7 @@ COPYRIGHT_END
 /// \param[in] ...
 ///     printf arguments
 
+/// Use COBARO_TRACE_ENABLED to enable/disable tracing at compile time.
 #if defined (COBARO_TRACE_ENABLED)
 # define COBARO_TRACE(level, format, ...) \
     cobaro_trace(__FILE__, __LINE__, level, format, __VA_ARGS__)
