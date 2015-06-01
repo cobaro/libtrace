@@ -13,7 +13,7 @@ Code level documentation is provided via `doxygen
 <https://www.cobaro.org/libtrace/doxygen/index.html>`_
 
 Quickstart
-----------
+~~~~~~~~~~
 
 * Install the developer package, or build from source.
 * Add `pkg-config --cflags libcobaro-trace0` to CPPFLAGS
@@ -24,9 +24,26 @@ Quickstart
 
  #include <libcobaro-trace/trace.h>
 
+* Add trace statements:
+
+.. code:: 
+
  #define COBARO_TRACE_ENABLED 1
 
- COBARO_TRACE(level, "%s prints at level >= %d", "This example", level);
+ COBARO_TRACE(25, "%s prints at level >= %d", "This example", 25);
+
+* And make a run time selection based around the source file you are interested in, so for foo.c (or foo.cpp etc):
+
+.. code:: 
+
+  $ trace_foo=20 a.out
+
+will print:
+
+.. code:: 
+
+12:01:34 foo.c:137 This example prints at level >= 25
+
 
 Installation
 ------------
@@ -35,7 +52,7 @@ popular OS distributions, or from source.
 
 
 Binary packages
----------------
+~~~~~~~~~~~~~~~
 Binary packages for a limited number of platforms (typically latest
 ubuntu, redhat, OSX) are available from `cobaro.org
 <https://www.cobaro.org/libtrace>`_.
@@ -46,7 +63,7 @@ linkage is desired. The developer package contains everything needed
 to provide statically linked libraries.
 
 Building from source
---------------------
+~~~~~~~~~~~~~~~~~~~~
 Source releases can be obtained from `github
 <https://github.com/cobaro/libtrace>`_.
 
