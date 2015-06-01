@@ -29,6 +29,8 @@ COPYRIGHT_END
 /// \endcode
 /// would cause COBARO_TRACE statements in myfile.c or myfile.cpp of
 /// level <= 12 to print the desired output.
+///
+/// Code level documentation starts with <a href='trace_8h.html'>trace.h</a>
 
 /// \def COBARO_TRACE(level, format, ...)
 ///
