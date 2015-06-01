@@ -62,7 +62,7 @@ help:
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 
 clean-local:
-	-rm -rf $(BUILDDIR)/*
+	-rm -rf $(BUILDDIR)/* $(doc_DATA)
 
 html-local:
 	$(SPHINXBUILD) -c $(builddir) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
