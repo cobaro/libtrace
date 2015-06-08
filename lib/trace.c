@@ -10,6 +10,10 @@ COPYRIGHT_END
 
 #include "config.h"
 
+#if defined(HAVE_INTTYPES_H)
+# include <inttypes.h>
+#endif 
+
 #if defined(HAVE_LIBGEN_H)
 # include <libgen.h>
 #endif
@@ -39,6 +43,15 @@ COPYRIGHT_END
 # else
 #   include <time.h>
 # endif
+#endif
+
+// Define a portable format for suseconds_t (from struct timeval).
+#if SIZEOF_SUSECONDS_T == 4
+#  define PRI_SUSECONDS PRIi32
+#elif SIZEOF_SUSECONDS_T == 8
+#  define PRI_SUSECONDS PRIi64
+#else
+#  error Cannot find sizeof(suseconds_t)
 #endif
 
 char *cobaro_trace_version(void)
@@ -92,7 +105,7 @@ void cobaro_trace(char* file, int line, int level, char *format, ...)
 
     // Add microseconds, file and line number.
     formatted += snprintf(&buf[formatted], COBARO_MAX_LOGLINE,
-                          ".%06ld %s:%d ",
+                          ".%06"PRI_SUSECONDS" %s:%d ",
                           now.tv_usec, file_basename, line);
 
     // Add their trace message

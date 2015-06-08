@@ -59,6 +59,7 @@ AC_SUBST(LIB_VERSION)
 
 # Header files we need to know about
 AC_CHECK_HEADERS(\
+ inttypes.h \
  libgen.h \
  stdarg.h \
  stdio.h \
@@ -66,6 +67,9 @@ AC_CHECK_HEADERS(\
  sys/time.h
 )
 AC_HEADER_TIME
+
+# Check size of types that vary.
+AC_CHECK_SIZEOF([suseconds_t], [], [#include <sys/time.h>])
 
 # See if valgrind is available
 if test "x$cross_compiling" = xyes; then
