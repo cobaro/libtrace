@@ -4,7 +4,7 @@
 env
 set -x
 
-export CFLAGS='-Wall -Werror -O2 -g -pipe -rdynamic -std=gnu99'
+export CFLAGS='-Wall -Werror -O2 -g -pipe -rdynamic -Wno-error=unused-command-line-argument -std=gnu99'
 ./bootstrap && \
 ./configure && \
 make && \
