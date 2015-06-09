@@ -4,8 +4,9 @@
 # COPYRIGHT_END
 
 SUBDIRS = \
-	rpm \
-	deb
+	darwin \
+	deb \
+	rpm
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = \

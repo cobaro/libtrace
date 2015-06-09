@@ -41,6 +41,10 @@ AC_SUBST(RPM_BUILD_ROOT)
 AC_PATH_PROG([DEBUILD], [debuild], [no])
 AM_CONDITIONAL(RUN_DEBUILD, test "x$DEBUILD" != xno)
 
+# OSX Settings
+AC_PATH_PROG([PKGBUILD], [pkgbuild], [no])
+AM_CONDITIONAL(RUN_PKGBUILD, test "x$PKGBUILD" != xno)
+
 # Library version numbering see:
 #  http://www.gnu.org/software/libtool/manual/html_node/Versioning.html
 # The rules are:
@@ -101,6 +105,7 @@ AC_CONFIG_FILES([
  m4/Makefile
  packages/Makefile
  packages/libcobaro-trace0.pc
+ packages/darwin/Makefile
  packages/deb/Makefile
  packages/rpm/Makefile
  packages/rpm/SPECS/Makefile
