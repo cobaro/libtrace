@@ -30,18 +30,18 @@ origin/release/*)
     TODAY=`date +%Y%m%d`
     SYSTYPE=`/usr/local/bin/systype.py -d`
 
-    case "$PLATFORM" in
+    case "$SYSTYPE" in
     Ubuntu|Debian)
         PACKAGES="libcobaro-trace0*_${RELEASE}_amd64.deb"
         ;;
-    Centos/Redhat)
+    Centos|Redhat)
         PACKAGES="packages/rpm/RPMS/x86_64/libcobaro-trace0*-${RELEASE}-${TODAY}.x86_64.rpm"
         ;;
-    Centos/Redhat)
+    MacOSX)
         PACKAGES="packages/darwin/libcobaro-trace0-*.pkg"
         ;;
     *)
-        echo "Unrecognised platform: $SYSTYPE"
+        echo "Unrecognised systype: $SYSTYPE"
         exit 1
         ;;
     esac
