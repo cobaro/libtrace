@@ -50,6 +50,7 @@ origin/release/*)
         mkdir -p releases
         cp $PACKAGES releases
     fi
+    ;;
 
 *)
     ;;
