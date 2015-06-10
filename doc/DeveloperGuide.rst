@@ -125,7 +125,7 @@ Static vs Dynamic Linkage
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 When linking the trace library, you can choose to do so by including
 the object code within your executable (static linking), or by
-referencing an installed shared libary (dynamic linking).  The
+referencing an installed shared library (dynamic linking).  The
 autotools toolchain encourages dynamic linking, and makes it quite
 hard to statically link a library if a shared version is installed.
 
