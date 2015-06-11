@@ -35,16 +35,15 @@ case "$GIT_BRANCH" in
 origin/release/*)
     RELEASE=${GIT_BRANCH#origin/release/}
     TODAY=`date +%Y%m%d`
-    SYSTYPE=`/usr/local/bin/systype.py -d`
 
-    case "$SYSTYPE" in
-    Ubuntu|Debian)
+    case "$label" in
+    Ubuntu*|Debian*)
         PACKAGES="libcobaro-trace0*_${PACKAGE_VERSION}_amd64.deb"
         ;;
-    Centos|Redhat)
+    Centos[67]|Redhat*)
         PACKAGES="packages/rpm/RPMS/x86_64/libcobaro-trace0*-${PACKAGE_VERSION}-${TODAY}.x86_64.rpm"
         ;;
-    MacOSX)
+    MacOSX*)
         PACKAGES="packages/darwin/libcobaro-trace0-*.pkg"
         ;;
     *)
@@ -54,8 +53,8 @@ origin/release/*)
     esac
 
     if [ -n "$PACKAGES" ]; then
-        mkdir -p releases/$RELEASE
-        cp $PACKAGES releases/$RELEASE
+        mkdir -p releases/$RELEASE/$label
+        cp $PACKAGES releases/$RELEASE/$label
     fi
     ;;
 
