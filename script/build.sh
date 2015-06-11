@@ -22,20 +22,27 @@ make distcheck
 make package
 (cd test; make valgrind)
 
+# From here on we need to be in a Jenkins environment so test that
+# so we can exit here nicely if we're not
+if [ -z "$JENKINS_HOME" ]; then exit 0; fi
+
+# Find out what version configure thinks we're at
+PACKAGE_VERSION=`grep PACKAGE_VERSION Makefile | awk '{ print $3 }'`
+
 # Stash the build output of release builds so we can easily fetch them
 # and they don't get overwritten by other builds
 case "$GIT_BRANCH" in
 origin/release/*)
-    RELEASE=${GIT_BRANCH#origin/release}
+    RELEASE=${GIT_BRANCH#origin/release/}
     TODAY=`date +%Y%m%d`
     SYSTYPE=`/usr/local/bin/systype.py -d`
 
     case "$SYSTYPE" in
     Ubuntu|Debian)
-        PACKAGES="libcobaro-trace0*_${RELEASE}_amd64.deb"
+        PACKAGES="libcobaro-trace0*_${PACKAGE_VERSION}_amd64.deb"
         ;;
     Centos|Redhat)
-        PACKAGES="packages/rpm/RPMS/x86_64/libcobaro-trace0*-${RELEASE}-${TODAY}.x86_64.rpm"
+        PACKAGES="packages/rpm/RPMS/x86_64/libcobaro-trace0*-${PACKAGE_VERSION}-${TODAY}.x86_64.rpm"
         ;;
     MacOSX)
         PACKAGES="packages/darwin/libcobaro-trace0-*.pkg"
@@ -47,8 +54,8 @@ origin/release/*)
     esac
 
     if [ -n "$PACKAGES" ]; then
-        mkdir -p releases
-        cp $PACKAGES releases
+        mkdir -p releases/$RELEASE
+        cp $PACKAGES releases/$RELEASE
     fi
     ;;
 
